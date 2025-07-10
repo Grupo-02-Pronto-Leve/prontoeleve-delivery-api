@@ -9,16 +9,17 @@ import {
   Body,
   Put,
   Delete,
+  UseGuards,
 } from '@nestjs/common';
 import { Categoria } from '../entities/categoria.entity';
 import { CategoriaService } from '../services/categoria.service';
-// import { JwtAuthGuard } from '../../auth/guard/jwt-auth.guard';
-// import { ApiBearerAuth, ApiTags } from '@nestjs/swagger';
+import { JwtAuthGuard } from '../../auth/guard/jwt-auth.guard';
+import { ApiBearerAuth, ApiTags } from '@nestjs/swagger';
 
-// @ApiTags('Categorias')
-// @UseGuards(JwtAuthGuard)
+@ApiTags('Categorias')
+@UseGuards(JwtAuthGuard)
 @Controller('/categorias')
-// @ApiBearerAuth()
+@ApiBearerAuth()
 export class CategoriaController {
   constructor(private readonly categoriaService: CategoriaService) {}
 
