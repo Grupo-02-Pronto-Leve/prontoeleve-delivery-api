@@ -55,6 +55,21 @@ export class ProdutoService {
     });
   }
 
+  async findByRestricao(restricao?: string): Promise<Produto[]> {
+    // Cria uma query personalizada com o QueryBuilder
+    const query = this.produtoRepository.createQueryBuilder('produto');
+
+    // Se foi passada uma restrição, adiciona um filtro na descrição
+    if (restricao) {
+      query.where('LOWER(produto.descricao) LIKE :restricao', {
+        restricao: `%${restricao.toLowerCase()}%`, // ex: %vegano%
+      });
+    }
+
+    // Executa a consulta e retorna os resultados encontrados
+    return query.getMany();
+  }
+
   async create(produto: Produto): Promise<Produto> {
     if (produto.categoria) {
       const categoria = await this.categoriaService.findById(
