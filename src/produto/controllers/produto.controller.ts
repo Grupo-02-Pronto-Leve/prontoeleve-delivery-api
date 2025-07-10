@@ -30,6 +30,15 @@ export class ProdutoController {
     return this.produtoService.findAll();
   }
 
+  // Rota: GET /produtos/restricao?restricao=vegano
+  @Get('/restricao')
+  async buscarProdutos(
+    @Query('restricao') restricao?: string,
+  ): Promise<Produto[]> {
+    // Chama o serviço passando a restrição (se houver)
+    return this.produtoService.findByRestricao(restricao);
+  }
+
   @Get('/:id')
   @HttpCode(HttpStatus.OK)
   findById(@Param('id', ParseIntPipe) id: number): Promise<Produto> {
@@ -40,15 +49,6 @@ export class ProdutoController {
   @HttpCode(HttpStatus.OK)
   findByName(@Param('nome') nome: string): Promise<Produto[]> {
     return this.produtoService.findByName(nome);
-  }
-
-  // Rota: GET /produtos/restricao?restricao=vegano
-  @Get('/restricao')
-  async buscarProdutos(
-    @Query('restricao') restricao?: string,
-  ): Promise<Produto[]> {
-    // Chama o serviço passando a restrição (se houver)
-    return this.produtoService.findByRestricao(restricao);
   }
 
   @Post()
