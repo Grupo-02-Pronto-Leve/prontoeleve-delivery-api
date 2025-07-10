@@ -58,8 +58,8 @@ export class CategoriaService {
     return await this.categoriaRepository.save(categoria);
   }
 
-  async create(Categoria: Categoria): Promise<Categoria> {
-    return await this.categoriaRepository.save(Categoria);
+  async create(categoria: Categoria): Promise<Categoria> {
+    return await this.categoriaRepository.save(categoria);
   }
 
   async update(categoria: Categoria): Promise<Categoria> {
