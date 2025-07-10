@@ -9,6 +9,7 @@ import {
   ParseIntPipe,
   Post,
   Put,
+  Query,
 } from '@nestjs/common';
 import { Produto } from '../entities/produto.entity';
 import { ProdutoService } from '../services/produto.service';
@@ -33,6 +34,15 @@ export class ProdutoController {
   @HttpCode(HttpStatus.OK)
   findByName(@Param('nome') nome: string): Promise<Produto[]> {
     return this.produtoService.findByName(nome);
+  }
+
+  // Rota: GET /produtos/restricao?restricao=vegano
+  @Get('/restricao')
+  async buscarProdutos(
+    @Query('restricao') restricao?: string,
+  ): Promise<Produto[]> {
+    // Chama o serviço passando a restrição (se houver)
+    return this.produtoService.findByRestricao(restricao);
   }
 
   @Post()
