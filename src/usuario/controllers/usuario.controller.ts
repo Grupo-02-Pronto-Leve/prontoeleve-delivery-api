@@ -1,4 +1,4 @@
-export class UsuarioController {}import {
+import {
   Body,
   Controller,
   Get,
