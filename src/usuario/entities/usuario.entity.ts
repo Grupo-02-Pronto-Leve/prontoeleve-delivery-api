@@ -21,7 +21,7 @@ export class Usuario {
   @Column({ length: 255, nullable: false })
   senha: string;
 
-  @Column({ length: 5000 })
+  @Column({ length: 5000, nullable: true })
   foto: string;
 
   @OneToMany(() => Produto, (produto) => produto.usuario)
