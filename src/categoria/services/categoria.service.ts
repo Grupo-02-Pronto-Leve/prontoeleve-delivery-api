@@ -15,6 +15,9 @@ export class CategoriaService {
       relations: {
         produtos: true,
       },
+      order: {
+        id: 'ASC',
+      },
     });
   }
 
