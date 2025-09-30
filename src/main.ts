@@ -11,7 +11,7 @@ async function bootstrap() {
     .setDescription('Projeto BackEnd de um Sistema de Delivery')
     .setContact(
       'Grupo 2, Generation',
-      'https://github.com/Grupo-02-Turma-JavaScript-07/Sistema-delivery',
+      'https://github.com/Grupo-02-Pronto-Leve/prontoeleve-delivery-api.git',
       'projetos.gen.grupo2@gmail.com',
     )
     .setVersion('1.0')
